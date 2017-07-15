@@ -11,20 +11,20 @@ export class AuthService {
 
   constructor(private http: Http) {}
 
-  login(username: string, password: string) {
+  login(user) {
     let headers = new Headers();
     headers.append('Content-Type', 'application/json');
 
+    const data = {
+      api_url: "https://api.exoclick.com/v2/login",
+      payload: JSON.stringify({api_token: ""})
+    };
+
     return this.http
-      .post(
-        this.exoClickLoginEndPoint,
-        JSON.stringify({ username: username, password: password }),
-        { headers }
-      )
+      .post('/api/proxy.php', data, { headers })
       .map((response: Response) => {
-        let user = response.json();
         this.isLoggedIn = true;
-        return user;
+        return response;
       });
   }
  
