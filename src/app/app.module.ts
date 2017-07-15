@@ -5,8 +5,11 @@ import { HttpModule } from '@angular/http';
 import { AppRoutingModule } from './app.routes';
 import { AuthModule } from './auth/auth.module';
 import { HomeModule } from './home/home.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import 'hammerjs';
 
 import { AppComponent } from './app.component';
+import { MdInputModule } from '@angular/material';
 
 @NgModule({
   declarations: [
@@ -18,7 +21,9 @@ import { AppComponent } from './app.component';
     HttpModule,
     AppRoutingModule,
     AuthModule,
-    HomeModule
+    HomeModule,
+    BrowserAnimationsModule,
+    MdInputModule
   ],
   providers: [],
   bootstrap: [AppComponent]
