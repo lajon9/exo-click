@@ -5,13 +5,13 @@ import { HomeComponent } from './home.component';
 import { AccountComponent } from './account/account.component';
 
 const homeRoutes: Routes = [
-    { path: 'account', component: HomeComponent, children: [
-      { path: '', component: AccountComponent }
-    ]} 
+  { path: 'account', component: HomeComponent, children: [
+    { path: '', component: AccountComponent }
+  ]} 
 ];
 
 @NgModule({
-    imports: [RouterModule.forChild(homeRoutes)],
-    exports: [RouterModule]
+  imports: [RouterModule.forChild(homeRoutes)],
+  exports: [RouterModule]
 })
 export class HomeRoutingModule { }
