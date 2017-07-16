@@ -7,6 +7,10 @@ body.exo-click-app {
 .pointer {
 	cursor: pointer;
 }
+.link {
+  color: #71B0D8;
+  cursor: pointer;
+}
 
 /* http://meyerweb.com/eric/tools/css/reset/ 
    v2.0 | 20110126

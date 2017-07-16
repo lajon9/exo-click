@@ -1,6 +1,6 @@
 <div class="login-page container">
   <div class="row">
-      <div class="col-xs-12 col-xs-8 col-xs-offset-2 col-sm-6 col-sm-offset-3 col-md-4 col-md-offset-4" *ngIf="!tryingToLogIn">
+      <div class="col-xs-12 col-sm-6 col-sm-offset-3 col-md-4 col-md-offset-4" *ngIf="!tryingToLogIn">
 
         <div class="error-message" [hidden]="!showError">
           Login Failed. Please try again. <i class="fa fa-times pull-right pointer" (click)="onCloseError()"></i>
@@ -30,7 +30,7 @@
           </md-input-container>
             
           <div class="col-xs-12 spacer-bottom">
-            <a class="link" routerLink="/forgot-password">Forgot Password</a>
+            <a class="link">Forgot Password</a>
             <div class="pull-right">
               <md-slide-toggle>Remember Me</md-slide-toggle>
             </div>
@@ -46,7 +46,7 @@
         </form>
 
         <div class="col-xs-12 spacer-bottom text-center">
-          Don't have an account? <a class="link" routerLink="/sign-up">Sign Up</a>
+          Don't have an account? <a class="link">Sign Up</a>
         </div>
 
       </div>
