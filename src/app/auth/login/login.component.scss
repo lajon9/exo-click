@@ -12,6 +12,13 @@
   left: 0;
 }
 
+.password-reveal {
+  position: absolute;
+  right: 0;
+  top: 12px;
+  cursor: pointer;
+}
+
 .sign-in-button {
   display: block;
   margin: 50px auto;

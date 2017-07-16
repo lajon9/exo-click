@@ -22,8 +22,10 @@
           </md-input-container>
           <md-input-container class="col-xs-12 spacer-bottom">
             <input placeholder="Password" formControlName="password" type="password"
+                   #passwordInput
                    mdInput
                    [(ngModel)]="user.password">
+            <i class="password-reveal fa fa-eye" (click)="onPassRevealClick($event)"></i>
             <md-hint *ngIf="signinForm.get('password').touched">
               <span *ngIf="signinForm.get('password').errors && signinForm.get('password').errors['required']">This field is required!</span>
             </md-hint>
