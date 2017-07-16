@@ -1,31 +1,40 @@
 import { Injectable } from '@angular/core';
-import { Headers, Http, Response } from '@angular/http';
+import { Headers, Http, Response, URLSearchParams } from '@angular/http';
 import { Observable } from 'rxjs';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 
 @Injectable()
 export class AuthService {
+  username: string;
   isLoggedIn: boolean = false;
   private exoClickLoginEndPoint = 'https://api.exoclick.com/v2/login';
 
   constructor(private http: Http) {}
 
   login(user) {
+    this.username = user.username;
     let headers = new Headers();
-    headers.append('Content-Type', 'application/json');
+    headers.append('Content-Type', 'application/x-www-form-urlencoded; charset=UTF-8');
 
-    const data = {
-      api_url: "https://api.exoclick.com/v2/login",
-      payload: JSON.stringify({api_token: ""})
-    };
-
+    let body = new URLSearchParams();
+    body.set('api_url', 'https://api.exoclick.com/v2/login');
+    body.set('payload', JSON.stringify({
+      api_token: '',
+      username: user.username,
+      password: user.password
+    }));
+    
     return this.http
-      .post('/api/proxy.php', data, { headers })
+      .post('/api/proxy.php', body, { headers })
       .map((response: Response) => {
+        console.log(response)
+
+        const resBody = response['_body'];
+        const resData = JSON.parse(resBody.substring(resBody.indexOf('{'), resBody.indexOf('}') + 1));
+
         this.isLoggedIn = true;
-        // currently not recieving a response
-        localStorage.setItem('exoClickToken', response['token']);
+        localStorage.setItem('exoClickToken', resData.token);
         return response;
       });
   }
@@ -35,10 +44,6 @@ export class AuthService {
     localStorage.removeItem('exoClickToken');
   }
 
-
-  isAuthenticated() {
-    return this.isLoggedIn;
-  }
   isAuthentcated() {
 		const promise = new Promise(
 			(resolve, reject) => {

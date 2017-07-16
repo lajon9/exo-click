@@ -30,6 +30,7 @@ export class LoginComponent implements OnInit {
   onSubmit(email, password) {
     this.authService.login(this.signinForm.value).subscribe(
       (result) => {
+        console.log(result)
         if (result) {
           this.router.navigate(['account']);
         }
