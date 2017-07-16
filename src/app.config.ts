@@ -1,3 +1,4 @@
 export const config = {
-  apiKey: ''
+  apiKey: '',
+  proxyPath: '/api/proxy.php'
 };

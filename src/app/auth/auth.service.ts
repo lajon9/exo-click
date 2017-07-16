@@ -35,7 +35,7 @@ export class AuthService {
     }));
     
     return this.http
-      .post('/api/proxy.php', body, { headers })
+      .post(config.proxyPath, body, { headers })
       .map((response: Response) => {
         console.log(response)
 
