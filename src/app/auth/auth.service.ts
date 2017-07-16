@@ -3,6 +3,7 @@ import { Headers, Http, Response, URLSearchParams } from '@angular/http';
 import { Observable } from 'rxjs';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
+import { config } from '../../app.config';
 
 @Injectable()
 export class AuthService {
@@ -20,7 +21,7 @@ export class AuthService {
     let body = new URLSearchParams();
     body.set('api_url', 'https://api.exoclick.com/v2/login');
     body.set('payload', JSON.stringify({
-      api_token: '',
+      api_token: config.apiKey,
       username: user.username,
       password: user.password
     }));
