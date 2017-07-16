@@ -2,8 +2,10 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.0.0.
 
-Edit 'app.config.ts' to provide the Exo Click API key.
-The proxy configuration is in 'proxy.config.json' file.
+Download or clone the repository.
+Run `npm install` in the project.
+Edit 'app.config.ts' to provide the Exo Click API key and optionally local path to PHP proxy server.
+Edit 'proxy.conf.json' file to configure proxy to your local PHP proxy server.
 
 ## Development server
 
