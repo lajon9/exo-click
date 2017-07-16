@@ -7,6 +7,7 @@ import { AuthService } from '../../auth/auth.service';
   styleUrls: ['./account.component.css']
 })
 export class AccountComponent implements OnInit {
+  // value of the logged in username
   username: string;
 
   constructor(private authService: AuthService) { }

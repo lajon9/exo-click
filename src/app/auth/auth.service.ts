@@ -5,6 +5,8 @@ import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 import { config } from '../../app.config';
 
+/** Service responsible for user authentication */
+
 @Injectable()
 export class AuthService {
   username: string;
@@ -13,6 +15,12 @@ export class AuthService {
 
   constructor(private http: Http) {}
 
+  /** Authenticate user with ExoClick API
+   * 
+   * @param {Object} user holds username and password parameters
+   * 
+   * @returns {Object} response from the API
+   */
   login(user) {
     this.username = user.username;
     let headers = new Headers();
@@ -45,6 +53,10 @@ export class AuthService {
     localStorage.removeItem('exoClickToken');
   }
 
+  /** Detect is user have been authenticated
+   * 
+   * @returns {Boolean} promise with the boolean value
+   */
   isAuthentcated() {
 		const promise = new Promise(
 			(resolve, reject) => {

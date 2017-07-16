@@ -9,6 +9,8 @@ import {
 import { Observable } from 'rxjs';
 import { AuthService } from './auth.service';
 
+/** Service responsible for restricting access to certain routes */
+
 @Injectable()
 export class AuthGuard implements CanActivate {
   constructor(private authService: AuthService, private router: Router) {}
