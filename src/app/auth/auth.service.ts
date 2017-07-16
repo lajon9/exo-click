@@ -37,8 +37,6 @@ export class AuthService {
     return this.http
       .post(config.proxyPath, body, { headers })
       .map((response: Response) => {
-        console.log(response)
-
         const resBody = response['_body'];
         const resData = JSON.parse(resBody.substring(resBody.indexOf('{'), resBody.indexOf('}') + 1));
 
