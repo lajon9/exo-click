@@ -24,17 +24,28 @@ export class AuthService {
       .post('/api/proxy.php', data, { headers })
       .map((response: Response) => {
         this.isLoggedIn = true;
+        // currently not recieving a response
+        localStorage.setItem('exoClickToken', response['token']);
         return response;
       });
   }
  
   logout() {
     this.isLoggedIn = false;
+    localStorage.removeItem('exoClickToken');
   }
 
 
   isAuthenticated() {
     return this.isLoggedIn;
   }
+  isAuthentcated() {
+		const promise = new Promise(
+			(resolve, reject) => {
+				resolve(this.isLoggedIn);
+			}
+		);
+		return promise;
+	}
 
 }

@@ -8,6 +8,7 @@ import 'hammerjs';
 import { Angular2FontawesomeModule } from 'angular2-fontawesome/angular2-fontawesome';
 import { LoginComponent } from './login/login.component';
 import { AuthService } from './auth.service';
+import { AuthGuard } from './auth-guard';
 
 @NgModule({
   declarations: [LoginComponent],
@@ -21,6 +22,6 @@ import { AuthService } from './auth.service';
     Angular2FontawesomeModule
   ],
   exports: [LoginComponent],
-  providers: [AuthService]
+  providers: [AuthService, AuthGuard]
 })
 export class AuthModule {}

@@ -1,6 +1,6 @@
 <div class="login-page container">
   <div class="row">
-      <div class="col-xs-12 col-sm-6 col-sm-offset-3 col-md-4 col-md-offset-4" *ngIf="!tryingToLogIn">
+      <div class="col-xs-12 col-sm-6 col-sm-offset-3 col-md-5 col-md-offset-4" *ngIf="!tryingToLogIn">
 
         <div class="error-message" [hidden]="!showError">
           Login Failed. Please try again. <i class="fa fa-times pull-right pointer" (click)="onCloseError()"></i>
@@ -39,7 +39,8 @@
           <div class="col-xs-12">
             <button class="sign-in-button" type="submit"
                     md-button
-                    [ngClass]="{ 'active': signinForm.valid }">
+                    [ngClass]="{ 'active': signinForm.valid }"
+                    [disabled]="signinForm.invalid">
               Log In
             </button>
           </div>
