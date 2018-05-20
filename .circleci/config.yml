@@ -30,12 +30,10 @@ jobs:
             - run:
                 name: Linting
                 command: npm run lint
-
-            - run: npm rebuild @angular/material
             # Test the source code
-            - run:
-                name: Testing
-                command: npm run test
+            # - run:
+                # name: Testing
+                # command: npm run test
             # Build project with different configuration based on
             # the current branch
             - run:
