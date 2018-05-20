@@ -12,7 +12,7 @@ export class LoginComponent implements OnInit {
   // reference for the password input element
   @ViewChild('passwordInput') passwordInput;
   // state of the password input value
-  showPassword: boolean = false;
+  showPassword = false;
   // web form that holds username and password details
   signinForm: FormGroup;
   // user model
@@ -21,9 +21,9 @@ export class LoginComponent implements OnInit {
     password: ''
   };
   // state of the sign in button
-  isDisabled: boolean = true;
+  isDisabled = true;
   // state of the error message
-  showError: boolean = false;
+  showError = false;
 
   constructor(private router: Router, private authService: AuthService) { }
 
@@ -37,13 +37,13 @@ export class LoginComponent implements OnInit {
   onSubmit(email, password) {
     this.authService.login(this.signinForm.value).subscribe(
       (result) => {
-        console.log(result)
+        console.log(result);
         if (result) {
           this.router.navigate(['account']);
         }
       },
       (error) => {
-        console.log(error)
+        console.log(error);
         this.showError = true;
       });
   }
@@ -57,7 +57,7 @@ export class LoginComponent implements OnInit {
     if (this.showPassword) {
       this.passwordInput.nativeElement.type = 'password';
     } else {
-      this.passwordInput.nativeElement.type = 'text'
+      this.passwordInput.nativeElement.type = 'text';
     }
     this.showPassword = !this.showPassword;
   }

@@ -9,7 +9,7 @@ const homeRoutes: Routes = [
   { path: '**', redirectTo: 'account' },
   { path: 'account', component: HomeComponent, canActivate: [AuthGuard], children: [
     { path: '', component: AccountComponent }
-  ]} 
+  ]}
 ];
 
 @NgModule({
