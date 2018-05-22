@@ -1,65 +1,65 @@
 <div class="login-page container">
   <div class="row">
-      <div class="col-xs-12 col-sm-6 col-sm-offset-3 col-md-5 col-md-offset-4" *ngIf="!tryingToLogIn">
+    <div class="col-xs-12 col-sm-6 col-sm-offset-3 col-md-5 col-md-offset-4" *ngIf="!tryingToLogIn">
 
-        <div class="error-message" [hidden]="!showError">
-          Login Failed. Please try again. <i class="fa fa-times pull-right pointer" (click)="onCloseError()"></i>
-        </div>
+      <div class="error-message" [hidden]="!showError">
+        Login Failed. Please try again. <i class="fa fa-times pull-right pointer" (click)="onCloseError()"></i>
+      </div>
 
-        <div class="row spacer-bottom">
-          <img class="col-xs-6 col-xs-offset-3" src="/assets/exo-click-banner.png" alt="exo click banner">
-        </div>
+      <div class="row spacer-bottom">
+        <img class="col-xs-6 col-xs-offset-3" src="/assets/exo-click-banner.png" alt="exo click banner">
+      </div>
+      
+      <form [formGroup]="signinForm" (ngSubmit)="onSubmit()">
         
-        <form [formGroup]="signinForm" (ngSubmit)="onSubmit()">
+        <mat-form-field class="col-xs-12 spacer-top spacer-bottom">
+          <input placeholder="Username" formControlName="username"
+                  matInput
+                  [(ngModel)]="user.username">
+          <mat-hint *ngIf="signinForm.get('username').touched">
+            <span *ngIf="signinForm.get('username').errors && signinForm.get('username').errors['required']">This field is required!</span>
+          </mat-hint>
+        </mat-form-field>
+        <mat-form-field class="col-xs-12 spacer-bottom">
+          <input placeholder="Password" formControlName="password" type="password"
+                  #passwordInput
+                  matInput
+                  [(ngModel)]="user.password">
+          <i class="password-reveal fa fa-eye" (click)="onPassRevealClick($event)"></i>
+          <mat-hint *ngIf="signinForm.get('password').touched">
+            <span *ngIf="signinForm.get('password').errors && signinForm.get('password').errors['required']">This field is required!</span>
+          </mat-hint>
+        </mat-form-field>
           
-          <mat-form-field class="col-xs-12 spacer-top spacer-bottom">
-            <input placeholder="Username" formControlName="username"
-                   matInput
-                   [(ngModel)]="user.username">
-            <mat-hint *ngIf="signinForm.get('username').touched">
-              <span *ngIf="signinForm.get('username').errors && signinForm.get('username').errors['required']">This field is required!</span>
-            </mat-hint>
-          </mat-form-field>
-          <mat-form-field class="col-xs-12 spacer-bottom">
-            <input placeholder="Password" formControlName="password" type="password"
-                   #passwordInput
-                   matInput
-                   [(ngModel)]="user.password">
-            <i class="password-reveal fa fa-eye" (click)="onPassRevealClick($event)"></i>
-            <mat-hint *ngIf="signinForm.get('password').touched">
-              <span *ngIf="signinForm.get('password').errors && signinForm.get('password').errors['required']">This field is required!</span>
-            </mat-hint>
-          </mat-form-field>
-            
-          <div class="col-xs-12 spacer-bottom">
-            <a class="link">Forgot Password</a>
-            <div class="pull-right">
-              <mat-slide-toggle>Remember Me</mat-slide-toggle>
-            </div>
+        <div class="col-xs-12 spacer-bottom">
+          <a class="link">Forgot Password</a>
+          <div class="pull-right">
+            <mat-slide-toggle>Remember Me</mat-slide-toggle>
           </div>
-
-          <div class="col-xs-12">
-            <button class="sign-in-button" type="submit"
-                    mat-button
-                    [ngClass]="{ 'active': signinForm.valid }"
-                    [disabled]="signinForm.invalid">
-              Log In
-            </button>
-          </div>
-        </form>
-
-        <div class="col-xs-12 spacer-bottom text-center">
-          Don't have an account? <a class="link">Sign Up</a>
         </div>
 
+        <div class="col-xs-12">
+          <button class="sign-in-button" type="submit"
+                  mat-button
+                  [ngClass]="{ 'active': signinForm.valid }"
+                  [disabled]="signinForm.invalid">
+            Log In
+          </button>
+        </div>
+      </form>
+
+      <div class="col-xs-12 spacer-bottom text-center">
+        Don't have an account? <a class="link">Sign Up</a>
       </div>
 
-      <div *ngIf="tryingToLogIn">
-        <h3>
-          We are login in, thanks for your patience
-        </h3>
-        <h3><mat-spinner></mat-spinner></h3>
-      </div>
+    </div>
+
+    <div *ngIf="tryingToLogIn">
+      <h3>
+        We are login in, thanks for your patience
+      </h3>
+      <h3><mat-spinner></mat-spinner></h3>
+    </div>
       
   </div>
 </div>

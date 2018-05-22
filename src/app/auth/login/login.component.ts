@@ -24,6 +24,7 @@ export class LoginComponent implements OnInit {
   isDisabled = true;
   // state of the error message
   showError = false;
+  tryingToLogIn = false;
 
   constructor(private router: Router, private authService: AuthService) { }
 
@@ -35,16 +36,25 @@ export class LoginComponent implements OnInit {
   }
 
   onSubmit(email, password) {
+    this.tryingToLogIn = true;
     this.authService.login(this.signinForm.value).subscribe(
+      // Observable Success
       (result) => {
         console.log(result);
         if (result) {
           this.router.navigate(['account']);
         }
       },
+      // Observable Error
       (error) => {
         console.log(error);
         this.showError = true;
+        this.tryingToLogIn = false;
+      },
+      // Observable Done
+      () => {
+        // console.log('Logged In!');
+        this.tryingToLogIn = false;
       });
   }
 
